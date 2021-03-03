@@ -1,0 +1,8 @@
+C:\Projects\Godot\CauldronC#\.mono\temp\bin\Debug\CauldronC#.dll
+C:\Projects\Godot\CauldronC#\.mono\temp\bin\Debug\CauldronC#.pdb
+C:\Projects\Godot\CauldronC#\.mono\temp\obj\Debug\CauldronC#.csprojAssemblyReference.cache
+C:\Projects\Godot\CauldronC#\.mono\temp\obj\Debug\CauldronC#.AssemblyInfoInputs.cache
+C:\Projects\Godot\CauldronC#\.mono\temp\obj\Debug\CauldronC#.AssemblyInfo.cs
+C:\Projects\Godot\CauldronC#\.mono\temp\obj\Debug\CauldronC#.csproj.CoreCompileInputs.cache
+C:\Projects\Godot\CauldronC#\.mono\temp\obj\Debug\CauldronC#.dll
+C:\Projects\Godot\CauldronC#\.mono\temp\obj\Debug\CauldronC#.pdb
