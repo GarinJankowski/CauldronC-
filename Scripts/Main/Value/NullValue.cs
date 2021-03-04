@@ -17,7 +17,7 @@ public class NullValue : Value
         this.returnAmount = returnAmount;
     }
 
-    public override float calculate(){
+    public override float calculate(Combatant source){
         return returnAmount;
     }
 }

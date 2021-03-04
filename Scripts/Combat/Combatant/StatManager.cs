@@ -91,15 +91,15 @@ public class StatManager
     }
 
     public int getStat(Stat stat){
-        return baseStats[stat].value();
+        return baseStats[stat].Value;
     }
     
     public int getMaxEnergy(){
-        return maxEnergy.getMax();
+        return maxEnergy.Max;
     }
 
     public int getMinEnergy(){
-        return maxEnergy.getMin();
+        return maxEnergy.Min;
     }
 
     public void addStat(Stat stat, int amount){
@@ -162,12 +162,10 @@ public class StatManager
             updateCurrentAmount();
         }
 
-        public int value(){
-            return currentAmount;
-        }
+        public int Value => currentAmount;
 
         protected int calculateAmount(){
-            return (amount + temporary) + (int)(mut.value()*mutationScaling);
+            return (amount + temporary) + (int)(mut.Value*mutationScaling);
         }
 
         protected virtual void updateCurrentAmount(){
@@ -204,12 +202,7 @@ public class StatManager
             currentMin = Math.Min(-1, val-(ENERGY_LIMIT*2));
         }
 
-        public int getMax(){
-            return currentAmount;
-        }
-
-        public int getMin(){
-            return currentMin;
-        }
+        public int Max => currentAmount;
+        public int Min => currentMin;
     }
 }

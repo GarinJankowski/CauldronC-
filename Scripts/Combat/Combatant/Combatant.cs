@@ -14,5 +14,5 @@ public abstract class Combatant
 {
     private StatManager statManager;
 
-    public StatManager stats() { return statManager; }
+    public StatManager Stats => statManager;
 }

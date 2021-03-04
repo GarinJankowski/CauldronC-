@@ -126,7 +126,7 @@ public static class Calculator
 
     private static int valueOfConstant(String constant, Combatant owner){
         int negative = 1;
-        if(constant.Substring(0,1) == "-"){
+        if(constant.StartsWith("-")){
             negative = -1;
             constant = constant.Substring(1);
         }
@@ -134,7 +134,7 @@ public static class Calculator
         if(!int.TryParse(constant, out value)){
             Stat stat;
             if(Enum.TryParse<Stat>(constant, out stat)){
-                return owner.stats().getStat(stat);
+                return owner.Stats.getStat(stat);
             }
             return 0;
         }

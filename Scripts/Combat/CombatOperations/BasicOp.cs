@@ -15,36 +15,35 @@ public abstract class BasicOp : CombatOp
     }
 
     private static Dictionary<Ops, Action<Combatant, int>> basicOperations = new Dictionary<Ops, Action<Combatant, int>>(){
-        {Ops.dealDamage, (tg, am) => tg.stats().addHealth(-am)},
+        {Ops.dealDamage, (tg, am) => tg.Stats.addHealth(-am)},
         
-        {Ops.gainHealth, (tg, am) => tg.stats().addHealth(am)},
-        {Ops.loseHealth, (tg, am) => tg.stats().addHealth(-am)},
+        {Ops.gainHealth, (tg, am) => tg.Stats.addHealth(am)},
+        {Ops.loseHealth, (tg, am) => tg.Stats.addHealth(-am)},
         
-        {Ops.gainEnergy, (tg, am) => tg.stats().addEnergy(am)},
-        {Ops.loseEnergy, (tg, am) => tg.stats().addEnergy(-am)},
+        {Ops.gainEnergy, (tg, am) => tg.Stats.addEnergy(am)},
+        {Ops.loseEnergy, (tg, am) => tg.Stats.addEnergy(-am)},
         
-        {Ops.gainMana, (tg, am) => tg.stats().addMana(am)},
-        {Ops.loseMana, (tg, am) => tg.stats().addMana(-am)},
+        {Ops.gainMana, (tg, am) => tg.Stats.addMana(am)},
+        {Ops.loseMana, (tg, am) => tg.Stats.addMana(-am)},
     };
 
     private Ops operation;
     private Value value;
 
-    public BasicOp(Ops operation, Value value){
+    public BasicOp(Tag tag, Ops operation, bool selfTarget, Value value): base(tag, selfTarget){
         this.operation = operation;
         this.value = value;
     }
 
-    public void execute(Combatant source, Combatant target, Action parent){
-        // gather Mods
-        int adds = 0;
-        int multiplier = 1;
+    protected override void operate(Combatant source, Combatant target, Action parent){
+        // gather Mods (should be ONE CALL for each Combatant)
+        
         // gather Auxes
+
         // execute operation
-        int amount = Math.Max(0, (int)((value.calculate()+adds)*multiplier));
-        basicOperations[operation](target, amount);
+        
         // set action results
 
-        // execute Auxes
+        // execute Auxes (should be ONE CALL for each Combatant)
     }
 }
