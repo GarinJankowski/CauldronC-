@@ -30,7 +30,7 @@ public abstract class BasicOp : CombatOp
     private Ops operation;
     private Value value;
 
-    public BasicOp(Tag tag, Ops operation, bool selfTarget, Value value): base(tag, selfTarget){
+    public BasicOp(string title, Ops operation, bool selfTarget, Value value): base(title, selfTarget){
         this.operation = operation;
         this.value = value;
     }
