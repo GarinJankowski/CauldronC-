@@ -37,14 +37,13 @@ using System.Collections.Generic;
 public abstract class CombatOp
 {
     protected bool selfTarget;
-    protected Tag logTag;
-    protected Tag modTag;
+    protected Tag tag;
 
     private Value loop;
     private bool hasLoop = false;
 
-    public CombatOp(string title, bool selfTarget){
-        assignTags(title);
+    public CombatOp(Tag tag, bool selfTarget){
+        this.tag = tag;
         this.selfTarget = selfTarget;
     }
 
@@ -75,6 +74,5 @@ public abstract class CombatOp
         hasLoop = true;
     }
 
-    protected abstract void assignTags(string title);
     protected abstract void operate(Combatant source, Combatant target, Action parent);
 }

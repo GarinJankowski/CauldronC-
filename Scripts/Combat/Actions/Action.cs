@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Action
 {
     private List<CombatOp> combatOps = new List<CombatOp>();
-    private Dictionary<string, int> results = new Dictionary<string, int>();
+    private Dictionary<Tag, int> results = new Dictionary<Tag, int>();
 
     private bool hostile;
     private string logOutput;
@@ -37,7 +37,7 @@ public class Action
             hostile = true;
     }
 
-    public void updateResult(string tag, int amount){
+    public void updateResult(Tag tag, int amount){
         if(!results.ContainsKey(tag))
             results.Add(tag, 0);
         results[tag] += amount;
@@ -46,7 +46,7 @@ public class Action
     public bool isHostile => hostile;
 
     private void clearResults(){
-        foreach (string key in results.Keys){
+        foreach (Tag key in results.Keys){
             results[key] = 0;
         }
     }

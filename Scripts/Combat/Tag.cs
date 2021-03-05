@@ -8,7 +8,7 @@ using System;
 */
 public abstract class Tag : IEquatable<Tag>
 {
-    private int id;
+    protected int id;
 
     public Tag(int id){
         this.id = id;
@@ -27,4 +27,7 @@ public abstract class Tag : IEquatable<Tag>
     {
         return id;
     }
+
+    public abstract Tag getLogTag();
+    public abstract Tag getModTag();
 }

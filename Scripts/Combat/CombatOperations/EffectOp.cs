@@ -16,7 +16,7 @@ public abstract class EffectOp : CombatOp
         {Ops.gainEffect, (target, name, amount, turns) => target.Stats.addHealth(0)},
         {Ops.loseEffect, (target, name, amount, turns) => target.Stats.addHealth(0)}
     };
-    
+
     private Tag turnTag;
 
     private Ops operation;
@@ -25,16 +25,12 @@ public abstract class EffectOp : CombatOp
     private Value value;
     private Value turnsValue;
 
-    public EffectOp(string title, Ops operation, bool selfTarget, string effectName, Value value, Value turnsValue): base(title, selfTarget){
+    public EffectOp(Tag tag, Tag turnTag, Ops operation, bool selfTarget, string effectName, Value value, Value turnsValue): base(tag, selfTarget){
+        this.turnTag = turnTag;
         this.operation = operation;
         this.effectName = effectName;
         this.value = value;
         this.turnsValue = turnsValue;
-    }
-
-    protected override void assignTags(string title)
-    {
-        // ALRIGHT MAKE A FACTORY DUDE
     }
 
     protected override void operate(Combatant source, Combatant target, Action parent){

@@ -30,7 +30,7 @@ public abstract class BasicOp : CombatOp
     private Ops operation;
     private Value value;
 
-    public BasicOp(string title, Ops operation, bool selfTarget, Value value): base(title, selfTarget){
+    public BasicOp(Tag tag, Ops operation, bool selfTarget, Value value): base(tag, selfTarget){
         this.operation = operation;
         this.value = value;
     }
@@ -38,8 +38,6 @@ public abstract class BasicOp : CombatOp
     protected override void operate(Combatant source, Combatant target, Action parent){
         // gather Mods (should be ONE CALL for each Combatant)
         
-        // gather Auxes
-
         // execute operation
         
         // set action results
