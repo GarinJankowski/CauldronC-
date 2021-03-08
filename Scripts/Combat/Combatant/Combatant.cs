@@ -13,6 +13,8 @@ Extenders of this class have:
 public abstract class Combatant
 {
     private StatManager statManager;
+    private CombatOpManager combatOpManager;
 
     public StatManager Stats => statManager;
+    public CombatOpManager CombatOps => combatOpManager;
 }

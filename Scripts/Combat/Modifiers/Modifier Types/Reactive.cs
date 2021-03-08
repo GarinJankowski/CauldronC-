@@ -4,11 +4,11 @@ using System;
 /*
 
 */
-public class ReactiveMod
+public class Reactive
 {
+    private int priority;
 
-
-    public ReactiveMod(){
+    public Reactive(){
 
     }
 

@@ -1,6 +1,6 @@
 
 /*
-    Represents any of the statistics 
+    Represents any of the basic statistics 
 */
 public enum Stat
 {

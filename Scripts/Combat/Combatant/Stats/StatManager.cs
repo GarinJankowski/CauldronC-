@@ -10,6 +10,7 @@ using System.Collections.Generic;
 */
 public class StatManager
 {
+    Combatant owner;
     private bool alive = true;
     private Dictionary<Stat, Statistic> baseStats;
 
@@ -17,10 +18,11 @@ public class StatManager
 
     private int currentHealth;
     private int currentEnergy;
-    private int extraTurns;
     private int currentMana;
 
-    public StatManager(int Str, int Dex, int Int, int Mut, int MHP, int MEP, int MMP){
+
+    public StatManager(Combatant owner, int Str, int Dex, int Int, int Mut, int MHP, int MEP, int MMP){
+            this.owner = owner;
             Statistic mutation = null;
             mutation = new Statistic(Mut, mutation);
     
@@ -33,20 +35,19 @@ public class StatManager
 
             //for each stat, the full word and shorthand keys refer to the same value
             baseStats = new Dictionary<Stat, Statistic>{
-            {Stat.Strength, strength},         {Stat.Str, strength},
-            {Stat.Dexterity, dexterity},       {Stat.Dex, dexterity},
-            {Stat.Intelligence, intelligence}, {Stat.Int, intelligence},
-            {Stat.Mutation, mutation},         {Stat.Mut, mutation},
-            {Stat.MaxHealth, maxHealth},       {Stat.MHP, maxHealth},
-            {Stat.MaxEnergy, maxEnergy},       {Stat.MEP, maxEnergy},
-            {Stat.MaxMana, maxMana},           {Stat.MMP, maxMana},
-        };
+                {Stat.Strength, strength},         {Stat.Str, strength},
+                {Stat.Dexterity, dexterity},       {Stat.Dex, dexterity},
+                {Stat.Intelligence, intelligence}, {Stat.Int, intelligence},
+                {Stat.Mutation, mutation},         {Stat.Mut, mutation},
+                {Stat.MaxHealth, maxHealth},       {Stat.MHP, maxHealth},
+                {Stat.MaxEnergy, maxEnergy},       {Stat.MEP, maxEnergy},
+                {Stat.MaxMana, maxMana},           {Stat.MMP, maxMana},
+            };
 
-        currentHealth = getStat(Stat.MaxHealth);
-        currentEnergy = 0;
-        extraTurns = 0;
-        currentMana = getStat(Stat.MaxMana);
-        
+            
+            currentHealth = getStat(Stat.MaxHealth);
+            currentEnergy = 0;
+            currentMana = getStat(Stat.MaxMana);
     }
 
     public void refresh(){
@@ -70,18 +71,19 @@ public class StatManager
     public void addEnergy(int amount){
         currentEnergy += amount;
         if(currentEnergy >= getMaxEnergy()){
-            extraTurns += 1;
+            // extraTurns += 1;
             currentEnergy = 0;
         }
         else if(currentEnergy <= getMinEnergy()){
-            extraTurns -= 1;
+            // extraTurns -= 1;
             currentEnergy = 0;
         }
     }
 
-    public int getExtraTurns() { return extraTurns; }
+    public int getExtraTurns() { return 0; // extraTurns;
+    }
     public void addExtraTurns(int amount) {
-        extraTurns += amount;
+        // extraTurns += amount;
     }
 
     public int getMana() { return currentMana; }
@@ -91,9 +93,9 @@ public class StatManager
     }
 
     public int getStat(Stat stat){
-        return baseStats[stat].Value;
+        return baseStats[stat].Amount;
     }
-    
+
     public int getMaxEnergy(){
         return maxEnergy.Max;
     }
@@ -105,7 +107,7 @@ public class StatManager
     public void addStat(Stat stat, int amount){
         baseStats[stat].add(amount);
     }
-
+    
     public void addTemp(Stat stat, int amount){
         baseStats[stat].addTemp(amount);
     }
@@ -162,10 +164,10 @@ public class StatManager
             updateCurrentAmount();
         }
 
-        public int Value => currentAmount;
+        public int Amount => currentAmount;
 
         protected int calculateAmount(){
-            return (amount + temporary) + (int)(mut.Value*mutationScaling);
+            return (amount + temporary) + (int)(mut.Amount*mutationScaling);
         }
 
         protected virtual void updateCurrentAmount(){
